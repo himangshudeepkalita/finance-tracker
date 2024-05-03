@@ -1,12 +1,32 @@
 import { useState } from "react";
+import { useUser } from "@clerk/clerk-react";
 
 export const FinancialRecordForm = () => {
-    const [description, setDescription] = useState<string>("");
-    const [amount, setAmount] = useState<string>("");
-    const [category, setCategory] = useState<string>("");
-    const [paymentMethod, setPaymentMethod] = useState<string>("");
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
 
-    const handleSubmit = () => {};
+  const { user } = useUser();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newRecord = {
+      userId: user?.id ?? "",
+      date: new Date(),
+      description: description,
+      amount: parseFloat(amount),
+      category: category,
+      paymentMethod: paymentMethod,
+    };
+
+    addRecord(newRecord);
+    setDescription("");
+    setAmount("");
+    setCategory("");
+    setPaymentMethod("");
+  };
 
   return (
     <div className="form-container">
