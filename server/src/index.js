@@ -4,13 +4,17 @@ import dotenv from "dotenv";
 import financialRecordRouter from "../src/routes/financial-records.js";
 import cors from "cors";
 
+
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://127.0.0.1:5173'
+}));
+
 
 const mongoURI = process.env.MONGO_URI;
 
