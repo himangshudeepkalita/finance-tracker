@@ -5,20 +5,50 @@ import { Auth } from "./pages/auth";
 import { FinancialRecordsProvider } from "./contexts/financial-record-context";
 import { SignedIn, UserButton } from "@clerk/clerk-react";
 // import { dark } from "@clerk/themes";
+import { Navigate } from "react-router-dom";
+
+// function App() {
+//   return (
+//     <Router>
+//       <div className="app-container">
+//         <div className="navbar">
+//           <Link to="/auth"> Dashboard</Link>
+//           <SignedIn>
+//             <UserButton showName />
+//           </SignedIn>
+//         </div>
+//         <Routes>
+//           <Route
+//             path="/"
+//             element={
+//               <FinancialRecordsProvider>
+//                 <Dashboard />
+//               </FinancialRecordsProvider>
+//             }
+//           />
+//           <Route path="/auth" element={<Auth />} />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
 
 function App() {
   return (
     <Router>
       <div className="app-container">
         <div className="navbar">
-          <Link to="/"> Dashboard</Link>
+          {/* <Link to="/auth">Auth</Link> */}
           <SignedIn>
             <UserButton showName />
           </SignedIn>
         </div>
         <Routes>
+          <Route path="/" element={<Navigate to="/auth" replace />} /> {/* Default to auth page */}
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <FinancialRecordsProvider>
                 <Dashboard />

@@ -79,7 +79,9 @@ export const FinancialRecordForm = () => {
             onChange={(e) => setPaymentMethod(e.target.value)}
           >
             <option value="">Select a Payment Method</option>
+            <option value="UPI">UPI</option>
             <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
             <option value="Cash">Cash</option>
             <option value="Bank Transfer">Bank Transfer</option>
           </select>
