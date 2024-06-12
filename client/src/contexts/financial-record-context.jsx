@@ -9,8 +9,11 @@ export const FinancialRecordsProvider = ({ children }) => {
 
   const fetchRecords = async () => {
     if (!user) return;
+    // const response = await fetch(
+    //   `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
+    // );
     const response = await fetch(
-      `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
+      `https://finance-tracker-vert.vercel.app/${user.id}`
     );
 
     if (response.ok) {
@@ -25,7 +28,14 @@ export const FinancialRecordsProvider = ({ children }) => {
   }, [user]);
 
   const addRecord = async (record) => {
-    const response = await fetch("http://localhost:3001/financial-records", {
+    // const response = await fetch("http://localhost:3001/financial-records", {
+    //   method: "POST",
+    //   body: JSON.stringify(record),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    const response = await fetch("https://finance-tracker-vert.vercel.app/financial-records", {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
@@ -44,8 +54,18 @@ export const FinancialRecordsProvider = ({ children }) => {
   };
 
   const updateRecord = async (id, newRecord) => {
+    // const response = await fetch(
+    //   `http://localhost:3001/financial-records/${id}`,
+    //   {
+    //     method: "PUT",
+    //     body: JSON.stringify(newRecord),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `https://finance-tracker-vert.vercel.app/financial-records/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -68,8 +88,14 @@ export const FinancialRecordsProvider = ({ children }) => {
   };
 
   const deleteRecord = async (id) => {
+    // const response = await fetch(
+    //   `http://localhost:3001/financial-records/${id}`,
+    //   {
+    //     method: "DELETE",
+    //   }
+    // );
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `https://finance-tracker-vert.vercel.app/financial-records/${id}`,
       {
         method: "DELETE",
       }
