@@ -10,7 +10,7 @@ export const FinancialRecordsProvider = ({ children }) => {
   const fetchRecords = async () => {
     if (!user) return;
     const response = await fetch(
-      `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
+      `http://localhost:3000/financial-records/getAllByUserID/${user.id}`
     );
 
     if (response.ok) {
@@ -25,7 +25,7 @@ export const FinancialRecordsProvider = ({ children }) => {
   }, [user]);
 
   const addRecord = async (record) => {
-    const response = await fetch("http://localhost:3001/financial-records", {
+    const response = await fetch("http://localhost:3000/financial-records", {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
@@ -45,7 +45,7 @@ export const FinancialRecordsProvider = ({ children }) => {
 
   const updateRecord = async (id, newRecord) => {
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `http://localhost:3000/financial-records/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -69,7 +69,7 @@ export const FinancialRecordsProvider = ({ children }) => {
 
   const deleteRecord = async (id) => {
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `http://localhost:3000/financial-records/${id}`,
       {
         method: "DELETE",
       }
