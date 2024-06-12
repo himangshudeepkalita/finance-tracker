@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import financialRecordRouter from "../src/routes/financial-records.js";
 import cors from "cors";
-import path from "path";
+// import path from "path";
 
 dotenv.config();
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -28,11 +28,11 @@ mongoose
 
 app.use("/financial-records", financialRecordRouter);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.use(express.static(path.join(__dirname, '/client/dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+// });
 
 app.listen(port, () => {
     console.log(`Server Running on Port ${port}`);
